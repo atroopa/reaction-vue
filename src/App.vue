@@ -10,9 +10,15 @@
   export default {
     name : 'App',
     components : {},
+    data() {
+      return {
+        delay: null,
+        isPlaying : false,
+      }
+    },
     methods: {
       start(){
-        
+
       }
     }
   }
