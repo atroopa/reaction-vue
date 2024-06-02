@@ -4,9 +4,9 @@
     <button 
       @click="start" 
       :disabled="isPlaying"
-      @end="endGame"
       class="bg-red-900 px-4 py-2 my-3 rounded-2xl text-red-100">Play</button>
-    <Block v-if="isPlaying" :delay="delay" />
+      <p class="font-bold text-lg text-green-900 ">Reaction Time: {{score}} mili second</p>
+      <Block v-if="isPlaying" :delay="delay" @end="endGame"/>
   </div>
 </template>
 
@@ -32,8 +32,8 @@ import Block from './components/Block.vue'
         this.isPlaying = true
         console.log(this.delay)
       },
-      endGame(){
-
+      endGame(reactionTime){
+        this.score = reactionTime
       }
     }
   }
