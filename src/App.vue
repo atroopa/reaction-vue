@@ -4,6 +4,7 @@
     <button 
       @click="start" 
       :disabled="isPlaying"
+      :class="{'bg-red-300': isBlurred}"
       class="bg-red-900 px-4 py-2 my-3 rounded-2xl text-red-100">Play</button>
       <Result v-if="showResult" :score="score"/>
       <Block v-if="isPlaying" :delay="delay" @end="endGame"/>
@@ -26,7 +27,8 @@ import Result from './components/Result.vue'
         delay: 0.0,
         isPlaying: false,
         score: null,
-        showResult: false
+        showResult: false,
+        isBlurred: false
       }
     },
     methods: {
@@ -34,12 +36,18 @@ import Result from './components/Result.vue'
         this.delay = 2000 + Math.random() * 5000
         this.isPlaying = true
         this.showResult = false
+        this.isBlurred = true
         console.log(this.delay)
+
+      setTimeout(() => {
+        this.isBlurred = false;
+      }, this.delay);
       },
       endGame(reactionTime){
         this.score = reactionTime
         this.isPlaying = false
         this.showResult = true
+        this.isBlurred = false
       }
     }
   }

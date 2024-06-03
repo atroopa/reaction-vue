@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <p  class="font-bold text-lg text-green-900 ">Reaction Time: {{score}} mili second</p>
-        <p>{{rank}}</p>
+        <p  class="font-bold text-lg text-green-900 text-center">{{rank}}</p>
     </div>
 </template>
 <script>
